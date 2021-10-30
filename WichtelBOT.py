@@ -27,7 +27,7 @@ SMTP_SERVER = config[2]
 def sendMail(receiver, subject, msg):
     #Send a Mail to the receiver with message msg and subject
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(SMTP_SERVER, 465, context = context) as server:
+    with smtplib.SMTP_SSL(SMTP_SERVER, 465, context = context) as server: # only works with ssl encryption
         server.login(MAIL_ADRESS, PASSWORD)
         message_text = ("Subject: " + subject + "\n\n" + msg)
         server.sendmail(MAIL_ADRESS, receiver, message_text)
@@ -35,7 +35,7 @@ def sendMail(receiver, subject, msg):
 def wichteln():
     #members is a list of all participants
     #creates a second list with who is wichtel for who
-    members = ["Michael Kaiser", "Romina Fuhrer"]
+    members = ["1 2", "3 4"]
     members2 = copy.deepcopy(members)
     list_wichtel = []
     for i in range(len(members)):
@@ -78,6 +78,6 @@ def get_mail_from_name(name):
 #Starts all the needed functions
 
 #wichteln()
-sendMail("mi.kaiser@bluewin.ch", "testing", "Hello, this is a test for the sending!")
+sendMail("your mail adress", "testing", "Hello, this is a test for the sending!")
 loop()
-get_mail_from_name("Michael Kaiser")
+get_mail_from_name("5 6")
